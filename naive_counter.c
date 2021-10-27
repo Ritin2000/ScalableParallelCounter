@@ -46,7 +46,8 @@ int main(int argc, char** argv) {
 	// holds pthread_t values in an array
 	threads = (pthread_t*)malloc(thread_num * sizeof(pthread_t));
 
-	clock_t begin = clock();
+	struct timeval end, start;
+	gettimeofday(&start, NULL);
 	// create threads with the increment function
 	int i = 0;
 	for (i = 0; i < thread_num; i++)
@@ -59,10 +60,12 @@ int main(int argc, char** argv) {
 	{
 		pthread_join(threads[i], NULL);
 	}
-	clock_t end = clock();
-
-	double runtime = (double)(end - begin) / CLOCKS_PER_SEC;
-	printf("Counter finish in %f ms\n", runtime);
+	
+	gettimeofday(&end, NULL);
+	double start_in_milli = (start.tv_sec) * 1000 + (start.tv_usec) / 1000;
+	double end_in_milli = (end.tv_sec) * 1000 + (end.tv_usec) / 1000;
+	double elapsed = end_in_milli - start_in_milli;
+	printf("Counter finish in %f ms\n", elapsed);
 	printf("The value of counter should be: %ld\n", thread_num * COUNTER_VALUE);
 	printf("The value of counter is: %d\n", count);
 
