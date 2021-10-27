@@ -1,3 +1,7 @@
+// Names: Ashwin Haridas, Ritin Nair
+// Netids: ah1058, rrn32
+// iLab Used: kill.cs.rutgers.edu
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <pthread.h>
