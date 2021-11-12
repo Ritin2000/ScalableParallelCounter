@@ -20,6 +20,8 @@ void* increment(void* args)
 	{
 		count++;
 	}
+
+	pthread_exit(NULL);
 }
 
 int main(int argc, char** argv) {

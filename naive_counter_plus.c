@@ -23,6 +23,9 @@ void* increment(void* args)
 		count++;
 		pthread_mutex_unlock(&mutex);
 	}
+
+	pthread_exit(NULL);
+
 }
 
 int main(int argc, char** argv) {
